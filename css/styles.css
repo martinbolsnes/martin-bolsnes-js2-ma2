@@ -25,6 +25,10 @@ input[type='text'] {
   padding: 5px;
 }
 
+input:focus {
+  outline: none;
+}
+
 button {
   height: 40px;
   border: none;
