@@ -11,7 +11,6 @@ export default function writeToDOM(
     if (groceryItem.checked) {
       ischecked = 'checked';
     }
-
     domElementIAmGoingToPutHTMLInto.innerHTML += `<li>
 					<span>${groceryItem.name}</span>
 					<input ${ischecked} type="checkbox" class="checkbox" data-id=${groceryItem.id}>
@@ -26,16 +25,21 @@ export default function writeToDOM(
       ) {
         return groceryObject.id === parseInt(checkbox.dataset.id);
       });
-
-      console.log(indexOfItem);
-      console.log(theArrayIAmGoingToCreateHTMLFrom[indexOfItem]);
-
+      const listBackground = document.querySelectorAll('li');
       if (theArrayIAmGoingToCreateHTMLFrom[indexOfItem].checked) {
         theArrayIAmGoingToCreateHTMLFrom[indexOfItem].checked = '';
-        document.querySelector('li').classList.remove('checked');
+        listBackground.forEach(function (item) {
+          item.onclick = function () {
+            item.style.backgroundColor = 'coral';
+          };
+        });
       } else {
         theArrayIAmGoingToCreateHTMLFrom[indexOfItem].checked = 'checked';
-        document.querySelector('li').classList.add('checked');
+        listBackground.forEach(function (item) {
+          item.onclick = function () {
+            item.style.backgroundColor = '#00ff0d';
+          };
+        });
       }
 
       saveToLocalStorage('groceryArrayKey', theArrayIAmGoingToCreateHTMLFrom);

@@ -1,4 +1,3 @@
-// imports always go on top
 import { testLengthOfInput } from './libs/validation.js';
 import writeToDOM from './libs/writeToDom.js';
 import {
